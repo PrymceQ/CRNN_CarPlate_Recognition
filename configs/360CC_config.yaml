@@ -1,0 +1,63 @@
+# 使用BGR格式进行训练
+GPUID: 0
+WORKERS: 8
+PRINT_FREQ: 100
+SAVE_FREQ: 2
+PIN_MEMORY: False
+OUTPUT_DIR: 'output'
+PLATENAME: "京沪津渝冀晋蒙辽吉黑苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新学警港澳挂使领民航危0123456789ABCDEFGHJKLMNPQRSTUVWXYZ险品"
+#PLATE_CHR: "#京沪津渝冀晋蒙辽吉黑苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新学警港澳挂使领民航危0123456789ABCDEFGHJKLMNPQRSTUVWXYZ险品"
+
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+
+DATASET:
+  DATASET: 360CC
+  ROOT: ""
+  TXT_FILE: {'train': 'datasets/train.txt', 'val': 'datasets/val.txt'}
+  SCALE_FACTOR: 0.25
+  ROT_FACTOR: 30
+  STD: 0.193
+  MEAN: 0.588
+  ALPHABETS: ''
+
+TRAIN:
+  BATCH_SIZE_PER_GPU: 256
+  SHUFFLE: True
+  BEGIN_EPOCH: 0  #
+  END_EPOCH: 5
+  RESUME:  # 继续训练
+    IS_RESUME: False
+    FILE: ''
+  OPTIMIZER: 'adam'   #
+  LR: 0.001   #
+  WD: 0.0   #
+  LR_STEP: [60, 80] #
+  # LR_STEP: [40,80,120,180]
+  LR_FACTOR: 0.1
+  MOMENTUM: 0.0
+  NESTEROV: False
+  RMSPROP_ALPHA:
+  RMSPROP_CENTERED:
+  FINETUNE:  # 微调, freeze
+    IS_FINETUNE: False   #
+    FINETUNE_CHECKPOINIT: ''  #
+    FREEZE: true
+
+TEST:
+  BATCH_SIZE_PER_GPU: 128
+  SHUFFLE: True  # for random test rather than test on the whole validation set
+  NUM_TEST: 1000
+  NUM_TEST_DISP: 10
+
+MODEL:
+  NAME: 'crnn'
+  IMAGE_SIZE:
+    OW: 280 # origial width: 280
+    H: 48
+    W: 168
+  NUM_CLASSES: 0
+  NUM_HIDDEN: 256
+
