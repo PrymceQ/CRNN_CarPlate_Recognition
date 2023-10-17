@@ -13,8 +13,8 @@
 1. 图片命名规则：车牌号_序号.jpg；
 2. 然后执行`create_label_txt.py`，用来生成`[img_path \t gtlabel]`的txt文件；
    ```
-   python plateLabel.py --image_path datasets/train/ --label_file datasets/train.txt
-   python plateLabel.py --image_path datasets/val/ --label_file datasets/val.txt
+   python create_label_txt.py --image_path datasets/train/ --label_file datasets/train.txt
+   python create_label_txt.py --image_path datasets/val/ --label_file datasets/val.txt
    ```
    ```
    datasets/val/云A390WG_0.jpg 25 52 45 51 42 72 58 
